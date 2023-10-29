@@ -5,6 +5,7 @@ import CompanyDescription from '@/components/companypage/companydescription';
 import { companyDetailsType } from '@/types/companypage.type';
 
 import { Inter } from 'next/font/google';
+import CompanyChart from '@/components/companypage/companychart';
 const inter = Inter({ subsets: ['latin'] });
 
 const CompanyPage = ({ data }: { data: companyDetailsType }) => {
@@ -20,6 +21,7 @@ const CompanyPage = ({ data }: { data: companyDetailsType }) => {
           exchange={data.exchange}
           currency={data.currency}
         />
+        <CompanyChart symbol={data.symbol} />
         <CompanyDescription
           name={data.name}
           description={data.description}
@@ -42,12 +44,14 @@ export default CompanyPage;
 
 export async function getServerSideProps({ query }: { query: { id: string } }) {
   const res = await fetch(
-    'https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo'
+    'https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo',
+    { next: { revalidate: 3600 } }
   );
   const data = await res.json();
 
   const topgainerlosers = await fetch(
-    'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
+    'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo',
+    { next: { revalidate: 3600 } }
   );
   const topgainerlosersData = await topgainerlosers.json();
 

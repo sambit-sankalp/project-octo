@@ -28,14 +28,16 @@ export default function Home({ top_gainers, top_losers }: homeprops) {
 
 export async function getServerSideProps() {
   const res = await fetch(
-    'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
+    'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo',
+    { next: { revalidate: 3600 } }
   );
   const data = await res.json();
 
   const top_gainers = data['top_gainers'];
   const top_gainers_results = top_gainers.map(async (item: comapanyData) => {
     const single_result = await fetch(
-      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo`
+      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo`,
+      { next: { revalidate: 3600 } }
     ).then((res) => res.json());
 
     return { ...item, name: single_result['Name'] };
@@ -48,7 +50,8 @@ export async function getServerSideProps() {
   const top_losers = data['top_losers'];
   const top_losers_results = top_losers.map(async (item: comapanyData) => {
     const single_result = await fetch(
-      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo`
+      `https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo`,
+      { next: { revalidate: 3600 } }
     ).then((res) => res.json());
 
     return { ...item, name: single_result['Name'] };
