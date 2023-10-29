@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Card from '@/components/homepage/homecard';
 import styles from '@/styles/homepage.module.css';
-import {
-  comapanyData,
-  homecardDataType,
-  homeprops,
-} from '@/types/homepage.type';
+import { homecardDataType, homeprops } from '@/types/homepage.type';
 
 const Homepage = (homedata: homeprops) => {
   const [activeIndex, setactiveIndex] = useState(0);
   const [data, setData] = useState<homecardDataType[]>(homedata['top_gainers']);
+  const [loadMore, setloadMore] = useState(0);
   const tabsName = ['Top Gainers', 'Top Losers'];
+  const [paginatedData, setpaginatedData] = useState<homecardDataType[]>([]);
+
+  useEffect(() => {
+    const paginatedData = data.slice(0, 20 * (loadMore + 1));
+    setpaginatedData(paginatedData);
+  }, [data, loadMore, activeIndex]);
 
   const handleClick = (index: number) => {
     setactiveIndex(index);
     if (index === 0) {
       setData(homedata['top_gainers']);
+      setloadMore(0);
     } else {
       setData(homedata['top_losers']);
+      setloadMore(0);
     }
   };
 
@@ -38,8 +43,14 @@ const Homepage = (homedata: homeprops) => {
         ))}
       </div>
       <div className={styles.cardparentcontainer}>
-        {data.length !== 0 &&
-          data.map((data) => <Card key={data.ticker} data={data} />)}
+        {paginatedData.length !== 0 &&
+          paginatedData.map((data) => <Card key={data.ticker} data={data} />)}
+      </div>
+      <div
+        className={styles.loadMoreButton}
+        onClick={() => setloadMore(loadMore + 1)}
+      >
+        Load More
       </div>
     </div>
   );

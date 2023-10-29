@@ -52,3 +52,19 @@
   color: #000;
   border-bottom: 3px solid #000;
 }
+
+.loadMoreButton {
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #004643;
+  color: #fffffe;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+
+  margin: 10px auto;
+
+  @media only screen and (max-width: 769px) {
+    font-size: 0.8rem;
+  }
+}
