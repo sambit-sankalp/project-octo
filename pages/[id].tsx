@@ -2,18 +2,84 @@ import React from 'react';
 import styles from '@/styles/company.module.css';
 import CompanyHeader from '@/components/companypage/companyheader';
 import CompanyDescription from '@/components/companypage/companydescription';
+import { companyDetailsType } from '@/types/companypage.type';
 
-type Props = {};
+import { Inter } from 'next/font/google';
+const inter = Inter({ subsets: ['latin'] });
 
-const CompanyPage = (props: Props) => {
+const CompanyPage = ({ data }: { data: companyDetailsType }) => {
   return (
-    <main className={styles.container}>
+    <main className={`${styles.container} ${inter.className}`}>
       <div className={styles.subcontainer}>
-        <CompanyHeader />
-        <CompanyDescription />
+        <CompanyHeader
+          name={data.name}
+          symbol={data.symbol}
+          price={data.price}
+          changepercentage={data.changepercentage}
+          assetType={data.assetType}
+          exchange={data.exchange}
+          currency={data.currency}
+        />
+        <CompanyDescription
+          name={data.name}
+          description={data.description}
+          industry={data.industry}
+          sector={data.sector}
+          weekHigh52={data.weekHigh52}
+          weekLow52={data.weekLow52}
+          marketCap={data.marketCap}
+          peratio={data.peratio}
+          beta={data.beta}
+          dividendYield={data.dividendYield}
+          profitMargin={data.profitMargin}
+        />
       </div>
     </main>
   );
 };
 
 export default CompanyPage;
+
+export async function getServerSideProps({ query }: { query: { id: string } }) {
+  const res = await fetch(
+    'https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo'
+  );
+  const data = await res.json();
+
+  const topgainerlosers = await fetch(
+    'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
+  );
+  const topgainerlosersData = await topgainerlosers.json();
+
+  const changeData = [
+    ...topgainerlosersData['top_gainers'],
+    ...topgainerlosersData['top_losers'],
+  ].filter((item: any) => item['ticker'] === query['id']);
+
+  const reqData: companyDetailsType = {
+    name: data['Name'],
+    description: data['Description'],
+    symbol: data['Symbol'],
+    assetType: data['AssetType'],
+    exchange: data['Exchange'],
+    currency: data['Currency'],
+    country: data['Country'],
+    sector: data['Sector'],
+    industry: data['Industry'],
+    weekHigh52: data['52WeekHigh'],
+    weekLow52: data['52WeekLow'],
+    marketCap: data['MarketCapitalization'],
+    peratio: data['PERatio'],
+    beta: data['Beta'],
+    dividendYield: data['DividendYield'],
+    profitMargin: data['ProfitMargin'],
+    price: changeData[0]['price'] as string,
+    changepercentage: changeData[0]['change_percentage'] as string,
+  };
+
+  return {
+    props: {
+      data: reqData,
+    },
+  };
+}

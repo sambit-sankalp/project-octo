@@ -66,6 +66,12 @@
   color: #058900;
 }
 
+.headercontainer .header2 .textstyle2Dec {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #d50000;
+}
+
 /* Description CSS */
 .description {
   display: flex;
@@ -182,8 +188,8 @@
   width: 15px;
   background-color: #fff;
   border-radius: 50%;
-  border: 2px solid #f50;
-  box-shadow: -407px 0 0 400px #f50;
+  border: 2px solid #004643;
+  box-shadow: -407px 0 0 400px #004643;
 }
 
 .range1::-moz-range-thumb {
@@ -191,8 +197,8 @@
   width: 100%;
   background-color: #fff;
   border-radius: 50%;
-  border: 1px solid #f50;
-  box-shadow: -407px 0 0 400px #f50;
+  border: 1px solid #004643;
+  box-shadow: -407px 0 0 400px #004643;
 }
 
 .othercontainer {
@@ -220,7 +226,7 @@
 
 .othercontainer .content .desc {
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 700;
   color: #000;
   margin-top: 5px;
 }

@@ -1,0 +1,20 @@
+export type companyDetailsType = {
+  name: string;
+  description: string;
+  symbol: string;
+  assetType: string;
+  exchange: string;
+  currency: string;
+  country: string;
+  sector: string;
+  industry: string;
+  weekHigh52: string;
+  weekLow52: string;
+  marketCap: string;
+  peratio: string;
+  beta: string;
+  dividendYield: string;
+  profitMargin: string;
+  price: string;
+  changepercentage: string;
+};

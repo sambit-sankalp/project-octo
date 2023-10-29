@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/home.module.css';
 import Homepage from '@/screens/homepage';
@@ -27,7 +26,7 @@ export default function Home({ top_gainers, top_losers }: homeprops) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(
     'https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=demo'
   );
