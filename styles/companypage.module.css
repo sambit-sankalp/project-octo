@@ -1,0 +1,226 @@
+/* Header CSS */
+.headercontainer {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  margin-top: 25px;
+}
+
+.headercontainer .header1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.headercontainer .header1 .header1logo {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #424242;
+}
+
+.headercontainer .header1 .headcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 1rem;
+}
+
+.headercontainer .header1 .headcontent .headtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.headercontainer .header1 .headcontent .headsubtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #414141;
+}
+
+.headercontainer .header2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.headercontainer .header2 .textstyle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.headercontainer .header2 .textstyle2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #058900;
+}
+
+/* Description CSS */
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+  border: 2px solid #808080;
+  /* padding: 5px; */
+  border-radius: 10px;
+}
+
+.description .descriptiontitle {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+  color: #000;
+  border-bottom: 2px solid #808080;
+}
+
+.description .descriptioncontent {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #414141;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.tabscontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin-top: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  color: #fffffe;
+}
+
+.tabs {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 10px;
+  background-color: #004643;
+  color: #fffffe;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.slidecontainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0px;
+  padding: 0 20px;
+}
+
+.slidercontent1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.slidercontent2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.slidertitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #414141;
+}
+
+.sliderdescription {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.range1 {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.range1::-webkit-slider-runnable-track {
+  height: 15px;
+  background: #ccc;
+  border-radius: 16px;
+}
+
+.range1::-moz-range-track {
+  height: 15px;
+  background: #ccc;
+  border-radius: 16px;
+}
+
+.range1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 2px solid #f50;
+  box-shadow: -407px 0 0 400px #f50;
+}
+
+.range1::-moz-range-thumb {
+  height: 15px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #f50;
+  box-shadow: -407px 0 0 400px #f50;
+}
+
+.othercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.othercontainer .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.othercontainer .content .title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #434343;
+}
+
+.othercontainer .content .desc {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #000;
+  margin-top: 5px;
+}

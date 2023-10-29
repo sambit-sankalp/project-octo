@@ -1,0 +1,122 @@
+/* Sticky header */
+.header {
+  width: 100%;
+  background-color: #004643;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  width: 70%;
+}
+
+.brand {
+  font-size: 1rem;
+  color: #fffffe;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Search bar */
+.searchContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.searchTitle {
+  color: rgba(157, 194, 219, 0.89);
+  font-weight: 400;
+  position: absolute;
+  top: -7em;
+  width: 15em;
+  opacity: 0;
+  transition: all, 0.62s ease-in-out;
+}
+
+.searchTitle .show {
+  top: -3.4em;
+  opacity: 1;
+}
+
+.fieldset {
+  outline: 0;
+  border: 0;
+  position: relative;
+  background-color: transparent;
+}
+
+#searchBar {
+  height: 2.8em;
+  width: 2.8em;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  color: #006eff;
+  transition: all, 0.7s;
+  border: 0;
+  background-color: transparent;
+}
+
+#searchBar:focus {
+  outline: 0;
+  width: 20em;
+  border: 2px solid rgba(0, 0, 0, 1);
+  border-radius: 100px;
+  background-color: #f9bc60;
+  color: #001e1d;
+}
+
+#searchBar:focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+#searchBar::-webkit-input-placeholder {
+  opacity: 0;
+  font-size: 16px;
+  color: #535c68;
+  width: 1px;
+}
+
+.iconsContainer {
+  position: absolute;
+  top: 8px;
+  right: 21px;
+  width: 32px;
+  height: 31px;
+  cursor: pointer;
+  border: 0;
+}
+
+#searchIcon {
+  position: relative;
+  top: 2px;
+  left: 18px;
+  width: 60%;
+  height: 60%;
+  opacity: 1;
+  border-radius: 50%;
+  border: 3px solid #f9bc60;
+  transition: opacity 0.25s ease, transform 0.43s ease-in-out;
+}
+
+#searchIcon:after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  right: -2px;
+  width: 4px;
+  border-radius: 3px;
+  transform: rotate(-35deg);
+  height: 10px;
+  background-color: #f9bc60;
+}
