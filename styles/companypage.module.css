@@ -7,6 +7,11 @@
   justify-content: space-between;
   align-items: space-between;
   margin-top: 25px;
+  @media only screen and (max-width: 769px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 }
 
 .headercontainer .header1 {
@@ -14,6 +19,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  @media only screen and (max-width: 769px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .headercontainer .header1 .header1logo {
@@ -33,18 +42,27 @@
   justify-content: center;
   align-items: flex-start;
   margin-left: 1rem;
+  @media only screen and (max-width: 769px) {
+    margin-left: 0rem;
+  }
 }
 
 .headercontainer .header1 .headcontent .headtitle {
   font-size: 1.5rem;
   font-weight: 500;
   color: #000;
+  @media only screen and (max-width: 769px) {
+    font-size: 1.2rem;
+  }
 }
 
 .headercontainer .header1 .headcontent .headsubtitle {
   font-size: 1rem;
   font-weight: 500;
   color: #414141;
+  @media only screen and (max-width: 769px) {
+    font-size: 0.8rem;
+  }
 }
 
 .headercontainer .header2 {
@@ -52,6 +70,10 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  @media only screen and (max-width: 769px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
 
 .headercontainer .header2 .textstyle {
@@ -79,6 +101,7 @@
   justify-content: center;
   align-items: flex-start;
   margin-top: 20px;
+  margin-bottom: 30px;
   border: 2px solid #808080;
   /* padding: 5px; */
   border-radius: 10px;
@@ -91,6 +114,9 @@
   font-weight: 700;
   color: #000;
   border-bottom: 2px solid #808080;
+  @media only screen and (max-width: 769px) {
+    font-size: 1rem;
+  }
 }
 
 .description .descriptioncontent {
@@ -99,6 +125,9 @@
   color: #414141;
   margin-top: 10px;
   padding: 10px;
+  @media only screen and (max-width: 769px) {
+    font-size: 0.8rem;
+  }
 }
 
 .tabscontainer {
@@ -111,6 +140,11 @@
   margin-left: 0;
   margin-right: 0;
   color: #fffffe;
+  @media only screen and (max-width: 769px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0px;
+  }
 }
 
 .tabs {
@@ -122,6 +156,10 @@
   padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
+  @media only screen and (max-width: 769px) {
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
 }
 
 .slidecontainer {
@@ -145,18 +183,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  margin-left: 5px;
 }
 
 .slidertitle {
   font-size: 0.8rem;
   font-weight: 500;
   color: #414141;
+  @media only screen and (max-width: 769px) {
+    font-size: 0.7rem;
+  }
 }
 
 .sliderdescription {
   font-size: 0.8rem;
   font-weight: 700;
   color: #000;
+  @media only screen and (max-width: 769px) {
+    font-size: 0.7rem;
+  }
 }
 
 .range1 {
@@ -167,6 +212,9 @@
   outline: none;
   overflow: hidden;
   border-radius: 16px;
+  @media only screen and (max-width: 769px) {
+    width: 60%;
+  }
 }
 
 .range1::-webkit-slider-runnable-track {
@@ -207,6 +255,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0 20px;
 }
 
@@ -231,14 +280,27 @@
   margin-top: 5px;
 }
 
+.chartLoaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-height: 300px;
+}
+
 .chartsize {
   width: 100%;
   height: 100%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border: 2px solid #808080;
   padding: 10px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .chartsize .charttitle {
@@ -250,27 +312,36 @@
 
 .cartTypeContainer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  @media only screen and (max-width: 769px) {
+    margin-top: 10px;
+  }
 }
 
 .cartTypeContainer .cartTypeSubContainer {
   display: flex;
   width: 30%;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  @media only screen and (max-width: 769px) {
+    width: 80%;
+  }
 }
 
 .cartTypeContainer .cartTypeSubContainer .cartType {
-  margin-left: 10px;
   background-color: transparent;
   color: #000;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 30px;
+  font-size: 1rem;
+  @media only screen and (max-width: 769px) {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
 }
 
 .cartTypeContainer .cartTypeSubContainer .cartTypeActive {

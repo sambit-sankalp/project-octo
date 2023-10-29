@@ -6,37 +6,46 @@ import { companyDetailsType } from '@/types/companypage.type';
 
 import { Inter } from 'next/font/google';
 import CompanyChart from '@/components/companypage/companychart';
+import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 const CompanyPage = ({ data }: { data: companyDetailsType }) => {
   return (
-    <main className={`${styles.container} ${inter.className}`}>
-      <div className={styles.subcontainer}>
-        <CompanyHeader
-          name={data.name}
-          symbol={data.symbol}
-          price={data.price}
-          changepercentage={data.changepercentage}
-          assetType={data.assetType}
-          exchange={data.exchange}
-          currency={data.currency}
-        />
-        <CompanyChart symbol={data.symbol} />
-        <CompanyDescription
-          name={data.name}
-          description={data.description}
-          industry={data.industry}
-          sector={data.sector}
-          weekHigh52={data.weekHigh52}
-          weekLow52={data.weekLow52}
-          marketCap={data.marketCap}
-          peratio={data.peratio}
-          beta={data.beta}
-          dividendYield={data.dividendYield}
-          profitMargin={data.profitMargin}
-        />
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>GrowwStonks | {data.symbol}</title>
+        <meta name="description" content="The Stocks App" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={`${styles.container} ${inter.className}`}>
+        <div className={styles.subcontainer}>
+          <CompanyHeader
+            name={data.name}
+            symbol={data.symbol}
+            price={data.price}
+            changepercentage={data.changepercentage}
+            assetType={data.assetType}
+            exchange={data.exchange}
+            currency={data.currency}
+          />
+          <CompanyChart symbol={data.symbol} />
+          <CompanyDescription
+            name={data.name}
+            description={data.description}
+            industry={data.industry}
+            sector={data.sector}
+            weekHigh52={data.weekHigh52}
+            weekLow52={data.weekLow52}
+            marketCap={data.marketCap}
+            peratio={data.peratio}
+            beta={data.beta}
+            dividendYield={data.dividendYield}
+            profitMargin={data.profitMargin}
+          />
+        </div>
+      </main>
+    </>
   );
 };
 

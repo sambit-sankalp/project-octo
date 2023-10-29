@@ -57,7 +57,9 @@ const CompanyChart = ({ symbol }: CompanyChartType) => {
   return (
     <div className={styles.chartsize}>
       {!(data && data.length > 0) ? (
-        <Loader />
+        <div className={styles.chartLoaderContainer}>
+          <Loader />
+        </div>
       ) : (
         <Line
           data={{

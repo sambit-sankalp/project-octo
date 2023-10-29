@@ -11,4 +11,7 @@
   align-items: center;
   min-height: 100vh;
   width: 70%;
+  @media only screen and (max-width: 769px) {
+    width: 90%;
+  }
 }
