@@ -67,7 +67,7 @@ const CompanyChart = ({ symbol }: CompanyChartType) => {
             datasets: [
               {
                 data: data.map((item: any) => item.Close),
-                backgroundColor: 'purple',
+                backgroundColor: 'green',
               },
             ],
           }}

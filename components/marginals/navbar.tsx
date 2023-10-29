@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '@/styles/navbar.module.css';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
@@ -13,13 +13,39 @@ const Navbar = () => {
     {
       name: string;
       symbol: string;
+      type: string;
+    }[]
+  >([]);
+  const [filteredSearchResults, setfilteredSearchResults] = useState<
+    {
+      name: string;
+      symbol: string;
+      type: string;
     }[]
   >([]);
 
+  const [searchOptionsActive, setSearchOptionsActive] = useState('All');
+
   const handleSearchIconClick = () => {
-    searchBarRef.current?.focus();
-    searchTitleRef.current?.classList.add('show');
+    // searchTitleRef.current?.classList.add('show');
   };
+
+  const searchOptions = ['All', 'Stocks', 'ETFs'];
+
+  useEffect(() => {
+    console.log(searchOptionsActive);
+    if (searchOptionsActive === 'Stocks') {
+      setfilteredSearchResults(
+        searchResults.filter((item) => !(item.type === 'ETF'))
+      );
+    } else if (searchOptionsActive === 'ETFs') {
+      setfilteredSearchResults(
+        searchResults.filter((item) => item.type === 'ETF')
+      );
+    } else {
+      setfilteredSearchResults(searchResults);
+    }
+  }, [searchOptionsActive, searchResults]);
 
   const onChangeSearch = (keywords: string) => {
     if (!keywords) return setsearchResults([]);
@@ -36,6 +62,7 @@ const Navbar = () => {
               json.bestMatches.map((item: any) => ({
                 symbol: item['1. symbol'],
                 name: item['2. name'],
+                type: item['3. type'],
               }))
             );
           }
@@ -43,13 +70,12 @@ const Navbar = () => {
     }, 500);
   };
 
-  useEffect(() => {
-    console.log(searchResults);
-  }, [searchResults]);
-
   const handleOnBlurSearch = () => {
+    // searchBarRef.current!.value = '';
+  };
+
+  const onClickCrossHandler = () => {
     searchBarRef.current!.value = '';
-    searchTitleRef.current!.classList.remove('show');
     setsearchResults([]);
   };
 
@@ -70,7 +96,12 @@ const Navbar = () => {
                 placeholder="Search..."
                 ref={searchBarRef}
                 onBlur={handleOnBlurSearch}
-                onChange={(e) => onChangeSearch(e.target.value)}
+                onChange={(e) =>
+                  onChangeSearch((e.target as HTMLInputElement).value)
+                }
+                onKeyDown={(e) =>
+                  onChangeSearch((e.target as HTMLInputElement).value)
+                }
               />
               <div className={styles.iconsContainer}>
                 <div
@@ -84,9 +115,28 @@ const Navbar = () => {
               <h2>Search Results</h2>
             </div>
           </div>
-          {searchResults.length !== 0 && (
+          {filteredSearchResults.length !== 0 && (
             <div className={styles.resultsContainer}>
-              {searchResults.map((res, index) => (
+              <div className={styles.searchHeaderContainer}>
+                <div className={styles.tagsContainer}>
+                  {searchOptions.map((item, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setSearchOptionsActive(item)}
+                      className={`${styles.tag} ${
+                        item === searchOptionsActive ? styles.activeTag : ''
+                      }`}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div
+                  className={styles.cross}
+                  onClick={onClickCrossHandler}
+                ></div>
+              </div>
+              {filteredSearchResults.map((res, index) => (
                 <div key={index} className={styles.resultsSubContainer}>
                   <h5 className={styles.resultTitle}>{res.name}</h5>
                   <h5 className={styles.resultSubTitle}>{res.symbol}</h5>
